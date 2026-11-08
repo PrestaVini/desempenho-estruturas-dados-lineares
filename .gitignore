@@ -1,0 +1,5 @@
+*.exe
+*.out
+*.o
+/fila/memoria-estatica/fila
+/fila/memoria-dinamica/fila
