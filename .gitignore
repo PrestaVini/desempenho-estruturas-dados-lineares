@@ -1,8 +1,11 @@
 *.exe
 *.out
 *.o
-fila
-lista
-pilha
-pilhaD
-pilhaE
+/fila/memoria-estatica/fila
+/fila/memoria-dinamica/fila
+/lista/memoria-estatica/lista
+/lista/memoria-dinamica/lista
+/pilha/memoria-estatica/pilha
+/pilha/memoria-dinamica/pilha
+/pilha/memoria-estatica/pilhaE
+/pilha/memoria-dinamica/pilhaD

@@ -91,6 +91,7 @@ int main(int argc, char *argv[]) {
 			break;
 		case 0:
 			limparTela();
+			inicializar();
 			printf("Encerrando o programa...");
 			break;
 		default:

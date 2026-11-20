@@ -7,7 +7,13 @@
 Fila f;
 
 void inicializar() {
-	f.inicio = NULL;
+	No *noAux;
+
+	while (f.inicio != NULL) {
+		noAux = f.inicio;
+		f.inicio = f.inicio->proximoEndereco;
+		free(noAux);
+	}
 	f.fim = NULL;
 }
 
