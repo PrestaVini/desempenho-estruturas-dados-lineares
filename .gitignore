@@ -1,5 +1,8 @@
 *.exe
 *.out
 *.o
-/fila/memoria-estatica/fila
-/fila/memoria-dinamica/fila
+fila
+lista
+pilha
+pilhaD
+pilhaE

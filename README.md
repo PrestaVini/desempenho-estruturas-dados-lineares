@@ -1,111 +1,165 @@
 # Desempenho de Estruturas de Dados Lineares
 
-Trabalho em grupo da disciplina de **Estrutura de Dados I (ED1)**, realizado no segundo semestre de 2026 no curso de Análise e Desenvolvimento de Sistemas do IFSP.
+Trabalho em grupo da disciplina de **Estrutura de Dados I**, desenvolvido no curso de Análise e Desenvolvimento de Sistemas do IFSP durante o segundo semestre de 2026.
 
-## Sobre a atividade
+## Enunciado da atividade
 
-O trabalho compara o tempo de execução das operações básicas de três estruturas de dados lineares:
+Implementar e comparar três estruturas de dados lineares:
 
 - Fila;
-- Lista;
-- Pilha.
+- Pilha;
+- Lista.
 
-Cada estrutura deverá possuir duas versões: uma implementação com **memória sequencial (estática)** e outra com **memória dinâmica**. O desempenho será medido em clocks do processador nas operações de inserção, remoção e listagem.
+Cada estrutura possui duas versões:
+
+- **Memória sequencial (estática):** utiliza vetores com capacidade máxima definida;
+- **Memória dinâmica:** utiliza nós ligados por ponteiros e alocação com `malloc`.
+
+O trabalho mede o tempo das operações de inserção, remoção e listagem para comparar o comportamento das duas formas de armazenamento.
 
 ## Integrantes e responsabilidades
 
 | Integrante | Responsabilidade | Status |
-|---|---|---|
+| --- | --- | --- |
 | Vinicius | Implementações estática e dinâmica da fila | Concluído |
-| Kevyn | Implementações estática e dinâmica da lista | Pendente |
-| Enzo | Implementações estática e dinâmica da pilha | Pendente |
-| Matheus | Execução dos programas e registro dos resultados | Pendente |
+| Kevyn | Implementações estática e dinâmica da lista | Concluído |
+| Enzo | Implementações estática e dinâmica da pilha | Concluído |
+| Matheus | Execução dos programas e registro dos resultados | Concluído |
 
-## Situação atual
+## Metodologia
 
-O trabalho **ainda está em desenvolvimento**. Até o momento, somente as duas implementações da fila foram concluídas. Os códigos de lista e pilha, a coleta dos tempos e o relatório final ainda serão adicionados.
+Os testes foram realizados com:
 
-## Metodologia dos testes
+- 1.000 elementos;
+- 3.000 elementos;
+- 5.000 elementos;
+- 10.000 elementos;
+- 50.000 elementos.
 
-Os testes serão feitos com as seguintes quantidades de elementos:
+Cada operação foi executada quatro vezes para cada quantidade. O primeiro ciclo foi descartado e os três resultados seguintes formaram a média aritmética apresentada na planilha.
 
-- 1.000;
-- 3.000;
-- 5.000;
-- 10.000;
-- 50.000.
+Todos os testes foram executados na mesma máquina e no mesmo ambiente para manter a comparação consistente.
 
-Para cada quantidade, as operações de inserção, remoção e listagem deverão ser executadas quatro vezes. O primeiro resultado será descartado; os três seguintes serão anotados e utilizados para calcular a média aritmética.
+## Ambiente dos testes
 
-Todos os testes deverão ser executados na mesma máquina para que a comparação seja coerente.
+| Item | Configuração |
+| --- | --- |
+| Sistema operacional | Microsoft Windows 11 Pro |
+| Editor | Visual Studio Code |
+| Compilador | GCC 16.1.0 — MSYS2/MinGW-w64 |
+| Processador | Intel Core i5-1334U de 13ª geração |
+| Memória RAM | 8 GB |
+| `CLOCKS_PER_SEC` | 1.000 |
+| Data dos testes | 18/11/2026 |
 
-## Implementações da fila
+Nesse ambiente, 1 clock corresponde a 1 milissegundo. Os tempos representam o comportamento executado pelos programas, incluindo a exibição dos elementos nas operações medidas.
 
-### Memória sequencial
+## Resultados
 
-A fila estática utiliza um vetor com capacidade máxima de 50.000 elementos. Ao remover um elemento, os valores seguintes são deslocados para manter o início da fila na primeira posição do vetor.
+A planilha [`Testes_Estruturas.xlsx`](resultados/Testes_Estruturas.xlsx) contém:
 
-### Memória dinâmica
+- As três baterias válidas de cada teste;
+- O cálculo automático das médias;
+- A verificação de discrepâncias entre as baterias;
+- A comparação entre memória estática e dinâmica;
+- A identificação automática da implementação mais rápida;
+- As informações do ambiente de execução.
 
-A fila dinâmica utiliza nós ligados por ponteiros. Cada nó armazena um número inteiro e o endereço do próximo elemento. A memória de cada nó removido é liberada com `free`.
+Os resultados mostram comportamentos diferentes conforme a estrutura e a operação:
 
-As duas versões possuem um menu para inserir, remover, listar, limpar a fila, alterar a quantidade de elementos e exibir o tempo gasto em clocks.
+- Na **fila**, a memória dinâmica apresentou vantagem principalmente nas remoções com grandes quantidades;
+- Na **pilha**, a memória estática foi mais rápida na maioria dos testes;
+- Na **lista**, a memória dinâmica apresentou vantagem nas remoções e em grande parte das listagens;
+- As diferenças menores devem ser interpretadas como variações normais do ambiente de execução.
 
 ## Estrutura do repositório
 
 ```text
-fila/
-├── memoria-estatica/
-│   ├── fila.c
-│   ├── fila.h
-│   └── main.c
-└── memoria-dinamica/
-    ├── fila.c
-    ├── fila.h
-    └── main.c
-lista/
-└── README.md
-pilha/
-└── README.md
-resultados/
-└── README.md
+.
+├── fila/
+│   ├── memoria-estatica/
+│   │   ├── fila.c
+│   │   ├── fila.h
+│   │   └── main.c
+│   └── memoria-dinamica/
+│       ├── fila.c
+│       ├── fila.h
+│       └── main.c
+├── pilha/
+│   ├── memoria-estatica/
+│   │   ├── pilha.c
+│   │   ├── pilha.h
+│   │   └── main.c
+│   └── memoria-dinamica/
+│       ├── pilha.c
+│       ├── pilha.h
+│       └── main.c
+├── lista/
+│   ├── memoria-estatica/
+│   │   ├── lista.c
+│   │   ├── lista.h
+│   │   └── main.c
+│   └── memoria-dinamica/
+│       ├── lista.c
+│       ├── lista.h
+│       └── main.c
+└── resultados/
+    └── Testes_Estruturas.xlsx
 ```
 
 ## Tecnologias utilizadas
 
 - Linguagem C;
-- Estruturas de dados lineares;
-- Vetores e memória sequencial;
-- Ponteiros e alocação dinâmica com `malloc` e `free`;
-- Biblioteca `time.h` para medição em clocks;
-- OnlineGDB para compilação e execução dos testes.
+- Vetores;
+- Ponteiros;
+- Estruturas (`struct`);
+- Alocação dinâmica com `malloc` e `free`;
+- Biblioteca `time.h` e função `clock()`;
+- Microsoft Excel;
+- Visual Studio Code;
+- GCC;
+- OnlineGDB.
 
-## Como executar os códigos da fila
+## Como executar
 
-### Pelo OnlineGDB
+Entre na pasta da estrutura e da implementação que deseja testar. Compile o arquivo principal junto com o arquivo da estrutura.
 
-1. Acesse o OnlineGDB e selecione a linguagem C.
-2. Adicione os arquivos `main.c`, `fila.c` e `fila.h` da versão desejada.
-3. Clique em **Run**.
-4. Informe uma quantidade entre 1 e 50.000 elementos.
-5. Utilize o menu para executar as operações e anotar os clocks apresentados.
-
-### Pelo terminal
-
-Entre na pasta da versão desejada e compile:
+### Fila
 
 ```bash
 gcc main.c fila.c -o fila
 ```
 
-Execute no Linux ou macOS:
+### Pilha
 
 ```bash
-./fila
+gcc main.c pilha.c -o pilha
+```
+
+### Lista
+
+```bash
+gcc main.c lista.c -o lista
+```
+
+No Linux ou macOS:
+
+```bash
+./nome-do-programa
 ```
 
 No Windows:
 
 ```powershell
-.\fila.exe
+.\nome-do-programa.exe
 ```
+
+Também é possível executar cada versão no OnlineGDB, adicionando o arquivo `main.c`, o arquivo `.c` da estrutura e o respectivo arquivo `.h`.
+
+## Validação
+
+As seis implementações foram compiladas com GCC. Os testes automatizados das pilhas foram executados sem resultados `RED`, e as operações principais de fila e lista foram verificadas. A planilha não apresenta erros de fórmula e seus cálculos foram conferidos.
+
+## Observação
+
+O projeto foi desenvolvido para fins acadêmicos. Os resultados podem variar conforme o sistema operacional, o compilador e o hardware utilizados.
